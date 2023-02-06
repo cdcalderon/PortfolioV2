@@ -35,56 +35,58 @@ class Portfolio extends React.Component {
 
     render() {
         return (
-            <section
-                id={`${this.props.id}`}
-                className="portfolio"
-                style={{ height: this.context.height }}
-            >
-                <Row>
-                    <Col md={2} className="side">
-                        <h2>
-                            <BaffleText
-                                text="Portfolio"
-                                revealDuration={500}
-                                revealDelay={500}
-                                parentMethod={this.showPortfolio}
-                                callMethodTime={1100}
-                            />
-                        </h2>
-                    </Col>
-                    <Col md={10} className="recent-works">
-                        <div className="portfolio_selector">
-                            <button
-                                className="portfolio_category"
-                                onClick={() => this.changeCategory(null)}
-                            >
-                                <span
-                                    className={`${
-                                        !this.state.category ? "active" : ""
-                                    }`}
+            <>
+                <section
+                    id={`${this.props.id}`}
+                    className="portfolio"
+                    style={{ height: this.context.height }}
+                >
+                    <Row>
+                        <Col md={2} className="side">
+                            <h2>
+                                <BaffleText
+                                    text="Portfolio"
+                                    revealDuration={500}
+                                    revealDelay={500}
+                                    parentMethod={this.showPortfolio}
+                                    callMethodTime={1100}
+                                />
+                            </h2>
+                        </Col>
+                        <Col md={10} className="recent-works">
+                            <div className="portfolio_selector">
+                                <button
+                                    className="portfolio_category"
+                                    onClick={() => this.changeCategory(null)}
                                 >
-                                    All
-                                </span>
-                            </button>
-                            {this.categories()}
-                        </div>
-
-                        <div className="content">
-                            <div
-                                className="portfolio_container"
-                                style={{
-                                    maxHeight:
-                                        this.context.height !== "auto"
-                                            ? this.context.height * 0.8
-                                            : "inherit",
-                                }}
-                            >
-                                {this.items()}
+                                    <span
+                                        className={`${
+                                            !this.state.category ? "active" : ""
+                                        }`}
+                                    >
+                                        All
+                                    </span>
+                                </button>
+                                {this.categories()}
                             </div>
-                        </div>
-                    </Col>
-                </Row>
-            </section>
+
+                            <div className="content">
+                                <div
+                                    className="portfolio_container"
+                                    style={{
+                                        maxHeight:
+                                            this.context.height !== "auto"
+                                                ? this.context.height * 0.8
+                                                : "inherit",
+                                    }}
+                                >
+                                    {this.items()}
+                                </div>
+                            </div>
+                        </Col>
+                    </Row>
+                </section>
+            </>
         );
     }
 
@@ -147,6 +149,18 @@ class Portfolio extends React.Component {
                                         options={{ scale: 1, max: 50 }}
                                     >
                                         <div className="overlay">
+                                            {value.content.frontmatter.url && (
+                                                <a
+                                                    className="url-site"
+                                                    href={
+                                                        value.content
+                                                            .frontmatter.url
+                                                    }
+                                                >
+                                                    Visit Site
+                                                </a>
+                                            )}
+
                                             <span className="title">
                                                 {
                                                     value.content.frontmatter
@@ -235,6 +249,7 @@ export default (props) => (
                                 id
                                 title
                                 category
+                                url
                                 image {
                                     childImageSharp {
                                         fluid(maxWidth: 2000, maxHeight: 2000) {
