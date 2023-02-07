@@ -151,6 +151,8 @@ class Portfolio extends React.Component {
                                         <div className="overlay">
                                             {value.content.frontmatter.url && (
                                                 <a
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
                                                     className="url-site"
                                                     href={
                                                         value.content
