@@ -1,0 +1,14 @@
+{
+  "site": {
+    "id": "d6dfde85-b33a-4d5b-9594-0d0662e2cf38",
+    "team": "cfdbd9e7-60d6-482d-8fe8-d213f7706e9a",
+    "platform": "ipfs",
+    "source": "ipfs",
+    "name": "old-resonance-5028"
+  },
+  "build": {
+    "baseDir": "",
+    "publicDir": "",
+    "rootDir": ""
+  }
+}
